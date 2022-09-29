@@ -1,24 +1,18 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+System dependencies
+___
+- postgresql
+- ruby
 
-Things you may want to cover:
+Database creation
+___
+create a database and update the database credentials in the `config/database.yml` file, 
+you basically want to update the database name, user and password
 
-* Ruby version
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Run Migrations
+___
+```shell
+rails db:migrate
+```
