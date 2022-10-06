@@ -1,17 +1,19 @@
-<%= form_with(model: todo) do |form| %>
-  <% if todo.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(todo.errors.count, "error") %> prohibited this todo from being saved:</h2>
+<div class="card">
+  <div class="card-body">
+    <%= form_with model: @todo do |form| %>
+      <div class="mb-3">
+        <%= form.label :name, 'Name', class: 'form-label' %>
+        <%= form.text_field :name, class: 'form-control' %>
+      </div>
 
-      <ul>
-        <% todo.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+      <div class="mb-3">
+        <%= form.label :status, 'Status', class: 'form-label' %>
+        <%= form.select :status, Todo.statuses.keys, class: 'form-select' %>
+      </div>
 
-  <div class="actions">
-    <%= form.submit %>
+      <div class="mb-3">
+        <%= form.submit "Submit", class: 'btn btn-primary' %>
+      </div>
+    <% end %>
   </div>
-<% end %>
+</div>
