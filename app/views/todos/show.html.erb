@@ -1,4 +1,33 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+  <div class="card">
+    <div class="card-body">
+      <h1 class="text-center"><%= @todo.name %></h1>
+    </div>
+  </div>
 
-<%= link_to 'Edit', edit_todo_path(@todo) %> |
-<%= link_to 'Back', todos_path %>
+  <div class="card mt-5">
+    <div class="card-body">
+      <table class="table">
+        <thead>
+        <tr>
+          <th scope="col">status</th>
+          <th scope="col">Created at</th>
+          <th scope="col">Updated at</th>
+        </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><%= @todo.status %></td>
+            <td><%= time_ago_in_words(@todo.created_at) %> ago</td>
+            <td><%= time_ago_in_words(@todo.updated_at) %> ago</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="mt-5">
+    <%= link_to 'Edit', edit_todo_path(@todo) %> |
+    <%= link_to 'Todo List', todos_path %>
+  </div>
+</div>
