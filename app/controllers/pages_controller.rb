@@ -1,6 +1,9 @@
 class PagesController < ApplicationController
   before_action :greet_me, :actual_time
 
+  def home
+  end
+
   def hello
   end
 

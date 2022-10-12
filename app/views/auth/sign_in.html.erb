@@ -1,0 +1,24 @@
+<%= render 'shared/nav' %>
+
+<div class="container">
+  <h1>Sign in Page</h1>
+
+  <div class="card">
+    <div class="card-body">
+      <%= form_with do |form| %>
+        <div class="mb-3">
+          <%= form.label :email, 'Email', class: 'form-label' %>
+          <%= form.email_field :email, class: 'form-control' %>
+        </div>
+
+        <div class="mb-3">
+          <%= form.label :password, 'Password', class: 'form-label' %>
+          <%= form.password_field :password, class: 'form-control' %>
+        </div>
+        <div class="mb-3">
+          <%= form.submit "Submit", class: 'btn btn-primary' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

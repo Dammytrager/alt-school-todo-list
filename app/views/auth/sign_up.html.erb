@@ -1,0 +1,40 @@
+<%= render 'shared/nav' %>
+
+<div class="container">
+  <h1>Sign up Page</h1>
+
+  <div class="card">
+    <div class="card-body">
+      <%= form_with scope: :user do |form| %>
+        <div class="mb-3">
+          <%= form.label :first_name, 'First Name', class: 'form-label' %>
+          <%= form.text_field :first_name, class: 'form-control' %>
+        </div>
+
+        <div class="mb-3">
+          <%= form.label :last_name, 'Last Name', class: 'form-label' %>
+          <%= form.text_field :last_name, class: 'form-control' %>
+        </div>
+
+        <div class="mb-3">
+          <%= form.label :email, 'Email', class: 'form-label' %>
+          <%= form.email_field :email, class: 'form-control' %>
+        </div>
+
+        <div class="mb-3">
+          <%= form.label :password, 'Password', class: 'form-label' %>
+          <%= form.password_field :password, class: 'form-control' %>
+        </div>
+
+        <div class="mb-3">
+          <%= form.label :password_confirmation, 'Confirm Password', class: 'form-label' %>
+          <%= form.password_field :password_confirmation, class: 'form-control' %>
+        </div>
+
+        <div class="mb-3">
+          <%= form.submit "Submit", class: 'btn btn-primary' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
