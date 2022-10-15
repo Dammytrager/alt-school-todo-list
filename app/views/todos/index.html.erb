@@ -1,7 +1,7 @@
 <div class="container">
   <div class="card">
     <div class="card-body d-flex justify-content-between">
-      <h1 class="text-center">My Todo list</h1>
+      <h1 class="text-center"><%= @user.first_name %> Todo list</h1>
       <%= link_to('New Todo', new_todo_path, class: 'btn btn-primary') %>
     </div>
   </div>

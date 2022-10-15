@@ -11,8 +11,13 @@
         </li>
       </ul>
       <div class="d-flex">
-        <%= link_to 'Sign In', sign_in_path, class: 'btn btn-outline-success me-3' %>
-        <%= link_to 'Sign Up', sign_up_path, class: 'btn btn-success' %>
+        <% if @user_signed_in %>
+          <%= link_to 'My Todos', todos_path, class: 'btn btn-outline-success me-3' %>
+          <%= link_to 'Logout', logout_path, class: 'btn btn-success', method: :post %>
+        <% else %>
+          <%= link_to 'Sign In', sign_in_path, class: 'btn btn-outline-success me-3' %>
+          <%= link_to 'Sign Up', sign_up_path, class: 'btn btn-success' %>
+        <% end %>
       </div>
     </div>
   </div>

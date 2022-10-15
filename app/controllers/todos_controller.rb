@@ -1,9 +1,10 @@
 class TodosController < ApplicationController
+  before_action :requires_sign_in
   before_action :set_todo, only: %i[ show edit update destroy ]
 
   # GET /todos or /todos.json
   def index
-    @todos = Todo.all.order(created_at: :desc)
+    @todos = @user.todos.order(created_at: :desc)
   end
 
   # GET /todos/1 or /todos/1.json
@@ -21,19 +22,22 @@ class TodosController < ApplicationController
 
   # POST /todos or /todos.json
   def create
-    Todo.create(params[:todo].permit!)
+    Todo.create({ **params[:todo].permit!, user: @user })
+    flash[:success] = 'Todo created successfully'
     redirect_to todos_path
   end
 
   # PATCH/PUT /todos/1 or /todos/1.json
   def update
     @todo.update(params[:todo].permit!)
+    flash[:success] = 'Todo updated successfully'
     redirect_to todos_path
   end
 
   # DELETE /todos/1 or /todos/1.json
   def destroy
     @todo.destroy
+    flash[:success] = 'Todo destroyed successfully'
     redirect_to todos_path
   end
 
