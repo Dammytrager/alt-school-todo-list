@@ -9,5 +9,11 @@ Rails.application.routes.draw do
     post 'logout', to: 'auth#logout', as: :logout
   end
 
+  namespace :api do
+    get 'test', to: 'test#index', as: :test
+    post 'users', to: 'auth#register', as: :register
+    post 'sign-in', to: 'auth#sign_in', as: :sign_in
+  end
+
   root 'pages#home'
 end
