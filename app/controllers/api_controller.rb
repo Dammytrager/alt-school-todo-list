@@ -8,6 +8,10 @@ class ApiController < ActionController::Base
     when ActionController::ParameterMissing
       return render json: { message: param_missing_message(e.message) || 'Invalid Params' },
                     status: :bad_request
+    when JWT::ExpiredSignature
+      return render json: { message: 'Token has expired' }, status: :unauthorized
+    when JWT::DecodeError
+      return render json: { message: 'Token is invalid' }, status: :unauthorized
     else
       return render json: { message: 'Internal server error' }, status: :internal_server_error
     end
@@ -22,6 +26,10 @@ class ApiController < ActionController::Base
       'First name is missing'
     elsif message.match?(/empty: last_name/)
       'Last name is missing'
+    elsif message.match?(/empty: status/)
+      'status is missing'
+    elsif message.match?(/empty: name/)
+      'name is missing'
     end
   end
 end
