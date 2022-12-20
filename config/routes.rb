@@ -15,11 +15,6 @@ Rails.application.routes.draw do
     post 'sign-in', to: 'auth#sign_in', as: :sign_in
 
     resources :todos, only: [:index, :create, :update, :destroy]
-    # get 'todos', to: 'todos#index', as: :api_todos_path
-    # post 'todos', to: 'todos#create', as: :api_todos_create_path
-    # put 'todos/:id', to: 'todos#update', as: :api_todos_path
-    # patch 'todos/:id', to: 'todos#update', as: :api_todos_path
-    # destroy 'todos/:id', to: 'todos#destroy', as: :api_todos_path
   end
 
   root 'pages#home'

@@ -12,6 +12,8 @@ class ApiController < ActionController::Base
       return render json: { message: 'Token has expired' }, status: :unauthorized
     when JWT::DecodeError
       return render json: { message: 'Token is invalid' }, status: :unauthorized
+    when ActiveRecord::RecordNotFound
+      return render json: { message: e.message || 'Resource not found' }, status: :not_found
     else
       return render json: { message: 'Internal server error' }, status: :internal_server_error
     end
