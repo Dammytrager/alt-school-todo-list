@@ -67,12 +67,4 @@ class Api::TodosController < ApiController
       name: params.require(:name)
     }
   end
-
-  def authenticate
-    token = request.headers['Authorization']&.gsub('Bearer ', '')
-    return render json: { message: 'No token in the header' }, status: :unauthorized if token.blank?
-
-    user_data = TokenService.decode(token)
-    @user = User.find(user_data.first['id'])
-  end
 end
